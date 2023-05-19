@@ -14,6 +14,9 @@ fastapi = {extras = ["all"], version = "^0.95.2"}
 server = "src.main:run"
 
 
+[tool.poetry.group.test.dependencies]
+pytest = "^7.3.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
