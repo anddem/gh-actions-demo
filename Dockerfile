@@ -1,5 +1,9 @@
 FROM python:3.10-slim-buster
 
+LABEL org.opencontainers.image.source=https://github.com/anddem/gh-actions-demo
+LABEL org.opencontainers.image.description="Demo image for STD"
+LABEL org.opencontainers.image.licenses=MIT
+
 ENV LANG="C.UTF-8" \
     LC_ALL="C.UTF-8" \
     APP_DIR="/opt/app/" \

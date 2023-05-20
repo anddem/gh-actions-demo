@@ -1,6 +1,8 @@
 name: Docker Image Push
 on:
   push:
+    branches:
+      - develop
     tags: 
       - '*'
 
