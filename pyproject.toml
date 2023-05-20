@@ -11,11 +11,11 @@ python = "^3.10"
 fastapi = {extras = ["all"], version = "^0.95.2"}
 
 [tool.poetry.scripts]
-server = "src.main:run"
-
+server = "uvicorn src.main:app --reload=true"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
+pytest-cov = "^4.0.0"
 
 [build-system]
 requires = ["poetry-core"]
