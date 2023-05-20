@@ -1,10 +1,6 @@
 name: Docker Image Push
 on:
-  push:
-    branches:
-      - develop
-    tags: 
-      - '*'
+  - workflow_call
 
 env:
   REGISTRY: ghcr.io

@@ -2,11 +2,10 @@ name: Basic Workflow
 on:
     push:
         branches: [develop]
-    # pull_request:
-    #     branches: [develop]
+        tags: ["*"]
 
 jobs:
-    install_dependencies:
+    install-dependencies:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -23,7 +22,7 @@ jobs:
             - name: Installing Dependencies
               run: poetry install
     test:
-        needs: [install_dependencies]
+        needs: [install-dependencies]
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -39,3 +38,10 @@ jobs:
               run: poetry install --with test
             - name: Running Tests
               run: poetry run pytest
+  
+    build-and-push-image:
+      needs: [test]
+      runs-on: ubuntu-latest
+      steps:
+        - name: Build and Deploy
+          uses: ./.github/workflows/registry.yml
