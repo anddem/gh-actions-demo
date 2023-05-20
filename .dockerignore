@@ -1,0 +1,16 @@
+# Ignore everything
+*
+
+# Allow files and directories
+!/src
+!poetry.lock
+!pyproject.toml
+!README*
+
+# Ignore unnecessary files inside allowed directories
+# This should go after the allowed directories
+**/*~
+**/__pycache__
+**/*.log
+**/.DS_Store
+**/Thumbs.db
