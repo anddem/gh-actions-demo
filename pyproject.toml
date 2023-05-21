@@ -17,6 +17,12 @@ server = "uvicorn src.main:app --reload=true"
 pytest = "^7.3.1"
 pytest-cov = "^4.0.0"
 
+
+[tool.poetry.group.docs.dependencies]
+pdoc = "^13.1.1"
+mkdocs = "^1.4.3"
+sphinx = "^7.0.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

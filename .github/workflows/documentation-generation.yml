@@ -1,0 +1,37 @@
+name: Documentaion Generators
+on:
+    workflow_call
+
+jobs:
+    installing-dependencies:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+          - name: Install poetry
+            run: pipx install poetry
+          - uses: actions/setup-python@v4
+            with:
+              python-version: '3.10'
+              cache: 'poetry'
+              cache-dependency-path: "poetry.lock"
+          - name: Installing Dependencies
+            run: poetry install --with=docs
+    
+    pdoc-generation:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+          - name: Install poetry
+            run: pipx install poetry
+          - uses: actions/setup-python@v4
+            with:
+              python-version: '3.10'
+              cache: 'poetry'
+              cache-dependency-path: "poetry.lock"
+          - name: Installing Dependencies
+            run: poetry install --with=docs
+          - name: pdoc documentation generation
+            run: poetry run pdoc -o ./docs
+
