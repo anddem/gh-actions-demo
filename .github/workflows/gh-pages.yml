@@ -30,12 +30,21 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Generation
-        uses: ./.github/workflows/documentation-generation.yml
+      - name: Install poetry
+        run: pipx install poetry
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'poetry'
+          cache-dependency-path: "poetry.lock"
+      - name: Installing Dependencies
+        run: poetry install --with=docs
+      - name: pdoc documentation generation
+        run: poetry run pdoc -o ./docs
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./docs/pdoc
+          source: ./docs
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
