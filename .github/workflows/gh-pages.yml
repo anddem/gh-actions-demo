@@ -40,7 +40,7 @@ jobs:
       - name: Installing Dependencies
         run: poetry install --with=docs
       - name: pdoc documentation generation
-        run: poetry run pdoc -o ./docs
+        run: poetry run pdoc -o ./docs src
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
